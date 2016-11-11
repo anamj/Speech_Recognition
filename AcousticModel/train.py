@@ -20,6 +20,7 @@ for i in range(res_num):
     y_data_onehot[i]=one_hot
     one_hot[y_data[i]]=0
 
+y_data=y_data_onehot
 print(X_data.shape)
 print(y_data.shape)
 X_train, X_vali, y_train, y_vali=train_test_split(X_data,y_data,test_size=0.33,random_state=20)
