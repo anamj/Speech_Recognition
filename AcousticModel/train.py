@@ -3,13 +3,22 @@ import tensorflow as tf
 import read_data
 from sklearn.model_selection import train_test_split
 
+
 data = list(read_data.read_joint_feat_alignment(alidir="mono_ali", set="train_20h", type="mfcc", cmvn=True, deltas=True))
 #Here all numpy arrays for each utterance are simply concatenated. If you are training e.g. a RNN this might not be what you want....
 X_data = np.concatenate(tuple(x[1] for x in data))
 y_data = np.concatenate(tuple(x[2] for x in data))
-
+res_kinds=
+res_num=len(y_data)
+y_data_onehot=zeros((res_num,res_kinds))
 #Remove original numpy matrices to save memory
 del data
+
+one_hot=np.zeros((res_kinds,1))
+for i in range(res_num):
+    one_hot[y_data[i]]=1
+    y_data_onehot[i]=one_hot
+    one_hot[y_data[i]]=0
 
 print(X_data.shape)
 print(y_data.shape)
