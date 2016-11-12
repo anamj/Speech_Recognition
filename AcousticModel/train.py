@@ -8,16 +8,16 @@ data = list(read_data.read_joint_feat_alignment(alidir="mono_ali", set="train_20
 #Here all numpy arrays for each utterance are simply concatenated. If you are training e.g. a RNN this might not be what you want....
 X_data = np.concatenate(tuple(x[1] for x in data))
 y_data = np.concatenate(tuple(x[2] for x in data))
-res_kinds=
+res_kinds=127
 res_num=len(y_data)
 y_data_onehot=zeros((res_num,res_kinds))
 #Remove original numpy matrices to save memory
 del data
 
-one_hot=np.zeros((res_kinds,1))
+one_hot=np.zeros((1,res_kinds))
 for i in range(res_num):
     one_hot[y_data[i]]=1
-    y_data_onehot[i]=one_hot
+    y_data_onehot[i,:]=one_hot
     one_hot[y_data[i]]=0
 
 y_data=y_data_onehot
