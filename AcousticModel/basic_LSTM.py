@@ -132,7 +132,9 @@ def main():
                 model.final_state = model.initial_state
             print("Task over. Model has been built.")
             # Save=tf.train.Saver()
-            # save_path=Save.save(sess,"train_20h_model.ckpt")
+            # save_path=Save.save(sess,"train_20h_model.ckpt")          
+if __name__ == 'main':
+    main()
 
 
 
